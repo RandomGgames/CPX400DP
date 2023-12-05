@@ -12,11 +12,7 @@ The CPX400DP Python module provides class for interfacing with CPX400DP power su
 
 ## Installation
 
-To install the CPX400DP Python module, use the following command:
-
-```bash
-pip install CPX400DP
-```
+CPX400DP.py must be downloaded into the project folder. It is not available yet through PIP yet (I wil do this one day when I figure out how/have the time and inspiration)
 
 ## Usage
 
