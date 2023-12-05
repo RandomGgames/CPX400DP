@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="window" named="True">
+    <property name="height">140</property>
+    <property name="resizable">none</property>
+    <property name="title" translatable="yes">Power Supply Control</property>
+    <property name="width">300</property>
+    <child>
+      <object class="ttk.Label" id="channel_1_label" named="True">
+        <property name="text" translatable="yes">Channel 1</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">50</property>
+          <property name="y">20</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="channel_2_label" named="True">
+        <property name="text" translatable="yes">Channel 2</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">210</property>
+          <property name="y">20</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="v_label_1" named="True">
+        <property name="text" translatable="yes">V</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">35</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="i_label_1" named="True">
+        <property name="text" translatable="yes">I</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">35</property>
+          <property name="y">65</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="channel_1_voltage" named="True">
+        <property name="textvariable">double:ch1v</property>
+        <property name="width">5</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">50</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="channel_1_current" named="True">
+        <property name="textvariable">double:ch1i</property>
+        <property name="width">5</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">50</property>
+          <property name="y">65</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="channel_2_voltage" named="True">
+        <property name="textvariable">double:ch2v</property>
+        <property name="width">5</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">210</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="channel_2_current" named="True">
+        <property name="textvariable">double:ch2i</property>
+        <property name="width">5</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">210</property>
+          <property name="y">65</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="set_channel_1" named="True">
+        <property name="command" type="command" cbtype="simple">update_channel_1</property>
+        <property name="text" translatable="yes">Set</property>
+        <property name="width">5</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">48</property>
+          <property name="y">90</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="set_channel_2" named="True">
+        <property name="command" type="command" cbtype="simple">update_channel_2</property>
+        <property name="text" translatable="yes">Set</property>
+        <property name="width">5</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">208</property>
+          <property name="y">90</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Checkbutton" id="channel_1_enable" named="True">
+        <property name="command" type="command" cbtype="simple">toggle_channel_1</property>
+        <property name="text" translatable="yes">Enable</property>
+        <property name="variable">boolean:enableChannel1</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">47</property>
+          <property name="y">115</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Checkbutton" id="channel_2_enable" named="True">
+        <property name="command" type="command" cbtype="simple">toggle_channel_2</property>
+        <property name="text" translatable="yes">Enable</property>
+        <property name="variable">boolean:enableChannel2</property>
+        <layout manager="place">
+          <property name="anchor">w</property>
+          <property name="x">207</property>
+          <property name="y">115</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="v_label_2" named="True">
+        <property name="text" translatable="yes">V</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">195</property>
+          <property name="y">40</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="i_label_2" named="True">
+        <property name="text" translatable="yes">I</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="x">195</property>
+          <property name="y">65</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="separator1">
+        <property name="orient">vertical</property>
+        <layout manager="place">
+          <property name="anchor">center</property>
+          <property name="height">100</property>
+          <property name="relx">0.5</property>
+          <property name="rely">0.5</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
