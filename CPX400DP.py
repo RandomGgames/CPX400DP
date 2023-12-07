@@ -1,5 +1,4 @@
 import logging
-logger = logging.getLogger(__name__)
 import os
 import serial
 import serial.tools.list_ports
@@ -7,6 +6,7 @@ import sys
 import tkinter as tk
 import tkinter.ttk as ttk
 import typing
+logger = logging.getLogger(__name__)
 
 __version__ = '1.1.3'
 
