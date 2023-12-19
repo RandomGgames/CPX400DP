@@ -8,7 +8,7 @@ import tkinter.ttk as ttk
 import typing
 logger = logging.getLogger(__name__)
 
-__version__ = '1.1.4'
+__version__ = '1.1.5'
 
 class CPX400DP:
     documentation_url = 'https://resources.aimtti.com/manuals/CPX400DP_Instruction_Manual-Iss1.pdf#page=28'
@@ -35,9 +35,9 @@ class CPX400DP:
             logger.debug(f'CPX400DP: Connecting to "{com_port}" with speed "{baudrate}"...')
             self.serialConnection = serial.Serial(com_port, baudrate)
             self.com_port = com_port
-            logger.debug(f'CPX400DP: Connected to "{com_port}" with speed "{baudrate}".')
+            logger.info(f'CPX400DP: Connected to "{com_port}" with speed "{baudrate}".')
         except Exception as e:
-            logger.exception(f'CPX400DP: An error occurred while connecting to com_port due to {repr(e)}.')
+            logger.warning(f'CPX400DP: An error occurred while connecting to com_port due to {repr(e)}.')
             raise e
     
     def autoConnect(self) -> None:
@@ -84,9 +84,9 @@ class CPX400DP:
         try:
             logger.debug(f'CPX400DP {self.com_port}: Terminating connection...')
             self.serialConnection.close()
-            logger.debug(f'CPX400DP {self.com_port}: Terminated connection.')
+            logger.info(f'CPX400DP {self.com_port}: Terminated connection.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while terminating connection due to {repr(e)}.')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while terminating connection due to {repr(e)}.')
             raise e
     
     def setVoltage(self, voltage: float, channel: int = 1) -> None:
@@ -103,9 +103,9 @@ class CPX400DP:
         try:
             logger.debug(f'CPX400DP {self.com_port}: Setting voltage for channel {channel} to {voltage}V...')
             self.serialConnection.write(bytes(f'V{channel} {voltage}\n'.encode('utf-8')))
-            logger.debug(f'CPX400DP {self.com_port}: Set voltage for channel {channel} to {voltage}V.')
+            logger.info(f'CPX400DP {self.com_port}: Set voltage for channel {channel} to {voltage}V.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while setting voltage due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while setting voltage due to {repr(e)}')
             raise e
     
     def setCurrent(self, current: float, channel: int = 1) -> None:
@@ -122,9 +122,9 @@ class CPX400DP:
         try:
             logger.debug(f'CPX400DP {self.com_port}: Setting current for channel {channel} to {current}A...')
             self.serialConnection.write(bytes(f'I{channel} {current}\n'.encode('utf-8')))
-            logger.debug(f'CPX400DP {self.com_port}: Set current for channel {channel} to {current}A.')
+            logger.info(f'CPX400DP {self.com_port}: Set current for channel {channel} to {current}A.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while setting current due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while setting current due to {repr(e)}')
             raise e
     
     def enableOutput(self, channel: int = 1) -> None:
@@ -140,9 +140,9 @@ class CPX400DP:
         try:
             logger.debug(f'CPX400DP {self.com_port}: Enabling channel {channel}...')
             self.serialConnection.write(bytes(f'OP{channel} 1\n'.encode('utf-8')))
-            logger.debug(f'CPX400DP {self.com_port}: Enabled channel {channel}.')
+            logger.info(f'CPX400DP {self.com_port}: Enabled channel {channel}.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while enabling channel {channel} due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while enabling channel {channel} due to {repr(e)}')
             raise e
     
     def disableOutput(self, channel: int = 1) -> None:
@@ -158,9 +158,9 @@ class CPX400DP:
         try:
             logger.debug(f'CPX400DP {self.com_port}: Disabling channel {channel}...')
             self.serialConnection.write(bytes(f'OP{channel} 0\n'.encode('utf-8')))
-            logger.debug(f'CPX400DP {self.com_port}: Disabled channel {channel}.')
+            logger.info(f'CPX400DP {self.com_port}: Disabled channel {channel}.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while disabling channel {channel} due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while disabling channel {channel} due to {repr(e)}')
             raise e
     
     def getSetVoltage(self, channel: int = 1) -> float:
@@ -182,7 +182,7 @@ class CPX400DP:
             logger.debug(f'CPX400DP {self.com_port}: Got set voltage for channel {channel}.')
             return float(self.serialConnection.readline()[3:].decode('utf-8').strip())
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while getting set voltage due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while getting set voltage due to {repr(e)}')
             raise e
     
     def getSetCurrent(self, channel: int = 1) -> float:
@@ -204,7 +204,7 @@ class CPX400DP:
             logger.debug(f'CPX400DP {self.com_port}: Got set current for channel {channel}.')
             return float(self.serialConnection.readline()[3:].decode('utf-8').strip())
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while getting set current due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while getting set current due to {repr(e)}')
             raise e
     
     def getOutputVoltage(self, channel: int = 1) -> float:
@@ -227,7 +227,7 @@ class CPX400DP:
             logger.debug(f'CPX400DP {self.com_port}: Got output voltage for channel {channel}.')
             return voltage
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while getting output voltage due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while getting output voltage due to {repr(e)}')
             raise e
     
     def getOutputCurrent(self, channel: int = 1) -> float:
@@ -250,7 +250,7 @@ class CPX400DP:
             logger.debug(f'CPX400DP {self.com_port}: Got output current for channel {channel}.')
             return current
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while getting output current due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while getting output current due to {repr(e)}')
             raise e
     
     def getOutputStatus(self, channel: int = 1) -> typing.Literal["ON", "OFF"]:
@@ -275,7 +275,7 @@ class CPX400DP:
             logger.debug(f'CPX400DP {self.com_port}: Got output status for channel {channel}.')
             return status
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while getting output current due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while getting output current due to {repr(e)}')
             raise e
     
     def lock(self) -> None:
@@ -290,7 +290,7 @@ class CPX400DP:
             self.serialConnection.write(bytes('IFLOCK\n'.encode('utf-8')))
             logger.debug(f'CPX400DP {self.com_port}: Locked settings.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while locking settings due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while locking settings due to {repr(e)}')
     
     def unlock(self) -> None:
         """
@@ -304,7 +304,7 @@ class CPX400DP:
             self.serialConnection.write(bytes('IFUNLOCK\n'.encode('utf-8')))
             logger.debug(f'CPX400DP {self.com_port}: Unlocked settings.')
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while unlocking settings due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while unlocking settings due to {repr(e)}')
     
     def getIdentification(self) -> typing.Dict[str, str]:
         """
@@ -324,7 +324,7 @@ class CPX400DP:
             logger.debug(f'CPX400DP {self.com_port}: Got identification info.')
             return data_dict
         except Exception as e:
-            logger.exception(f'CPX400DP {self.com_port}: An error occured while getting output current due to {repr(e)}')
+            logger.warning(f'CPX400DP {self.com_port}: An error occured while getting output current due to {repr(e)}')
             raise e
 
 class GuiApp:
