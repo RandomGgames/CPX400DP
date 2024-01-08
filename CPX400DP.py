@@ -8,7 +8,7 @@ import tkinter.ttk as ttk
 import typing
 logger = logging.getLogger(__name__)
 
-__version__ = '1.1.5'
+__version__ = '1.1.6'
 
 class CPX400DP:
     documentation_url = 'https://resources.aimtti.com/manuals/CPX400DP_Instruction_Manual-Iss1.pdf#page=28'
@@ -438,7 +438,7 @@ if __name__ == '__main__':
     logging.basicConfig(
         level = logging.DEBUG,
         format = '%(asctime)s.%(msecs)03d %(levelname)s: %(message)s',
-        datefmt = '%Y/%m/%d %H:%M:%S',
+        datefmt = '%Y-%m-%d %H:%M:%S',
         encoding = 'utf-8',
         handlers = [
             logging.FileHandler('latest.log', encoding = 'utf-8'),
