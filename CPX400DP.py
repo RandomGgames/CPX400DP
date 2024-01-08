@@ -8,7 +8,7 @@ import tkinter.ttk as ttk
 import typing
 logger = logging.getLogger(__name__)
 
-__version__ = '1.1.6'
+__version__ = '1.1.7'
 
 class CPX400DP:
     documentation_url = 'https://resources.aimtti.com/manuals/CPX400DP_Instruction_Manual-Iss1.pdf#page=28'
@@ -430,21 +430,22 @@ def main():
     GUI.run()
 
 if __name__ == '__main__':
-    # Clear latest.log if it exists
-    if os.path.exists('latest.log'):
-        open('latest.log', 'w').close()
+    if os.path.exists('latest.log'): open('latest.log', 'w').close() # Clear latest.log if it exists
     
-    # Set up logger
-    logging.basicConfig(
-        level = logging.DEBUG,
-        format = '%(asctime)s.%(msecs)03d %(levelname)s: %(message)s',
-        datefmt = '%Y-%m-%d %H:%M:%S',
-        encoding = 'utf-8',
-        handlers = [
-            logging.FileHandler('latest.log', encoding = 'utf-8'),
-            logging.StreamHandler(sys.stdout)
-        ]
-    )
+    # File handler
+    file_handler = logging.FileHandler('latest.log', encoding='utf-8')
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(logging.Formatter('%(asctime)s.%(msecs)03d %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
+    logger.addHandler(file_handler)
+    
+    # Console handler
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(logging.Formatter('%(asctime)s.%(msecs)03d %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
+    logger.addHandler(console_handler)
+    
+    # Set the overall logging level
+    logger.setLevel(logging.INFO)
     
     try:
         main()
