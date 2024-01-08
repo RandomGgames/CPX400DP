@@ -430,7 +430,9 @@ def main():
     GUI.run()
 
 if __name__ == '__main__':
-    if os.path.exists('latest.log'): open('latest.log', 'w').close() # Clear latest.log if it exists
+    # Clear latest.log if it exists
+    if os.path.exists('latest.log'):
+        open('latest.log', 'w').close()
     
     # File handler
     file_handler = logging.FileHandler('latest.log', encoding='utf-8')
