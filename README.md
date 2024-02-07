@@ -1,18 +1,12 @@
-# CPX400DP Python Module
+# ATTI-CPX400DP Python Module
 
 ## Overview
 
-The CPX400DP Python module provides class for interfacing with CPX400DP power supplies through serial communication via a USB cable. It allows control through a UI when run as \_\_main\_\_ or can be imported into code and can be scripted. It includes features for connecting to a power supply, setting voltage and current values, enabling/disabling channels, and retrieving status information.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Documentation](#documentation)
+The AimTTI CPX400DP Python module provides a class for interfacing with CPX400DP power supplies through serial communication via a USB cable. It allows control through a UI when run as \_\_main\_\_ or can be imported into code and can be scripted. Included are features for connecting to a power supply, setting voltage and current values, enabling/disabling channels, retrieving status information, and more.
 
 ## Installation
 
-CPX400DP.py must be downloaded into the project folder. It is not available yet through PIP yet (I wil do this one day when I figure out how/have the time and inspiration)
+CPX400DP.py must be downloaded into the project folder. It is not available yet through PIP as of yet (I might do this one day)
 
 ## Usage
 
@@ -44,7 +38,3 @@ power_supply.disableOutput(channel=1)
 # Disconnect from the power supply
 power_supply.disconnect() # Note: This does not disable the outputs!!
 ```
-
-## Documentation
-
-See file for documentation currently. 
